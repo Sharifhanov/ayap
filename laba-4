@@ -1,0 +1,33 @@
+# -*- coding: utf-8 -*-
+class driver:
+    def __init__(self, name, types):
+        self.name = name
+        self.types = types
+    def __repr__(self):
+        return "%s, %r" % (self.name, self.types)
+    def __str__(self):
+        return "Имя: %s, группа: %r" % (self.name, self.types)
+    def test(self):
+        return str(self)
+    def __call__(self, *args):
+        return  print("был вызван CALL:%s , %r" % (self.name,self.types))
+    
+my_list = [
+    driver('Шарифханов Артем Адикович', 'Категория В'),
+    driver('Иванов Иван Иванович', 'Категория В,С,D'),
+]
+print('Демонстрация lambda')
+printdriver=lambda x: print("Имя: %s, Категория: %r" % (x.name, x.types))
+for x in my_list:
+    printdriver(x)
+new_list= list(map(lambda x: x.name+" map",my_list))
+
+print("Демонстрация map")
+print(new_list)
+print("Демонстрация reduce// Суммирование имен в списке")
+from functools import reduce
+sum_all_Fio=reduce(lambda x, y: x.name+" "+y.name, my_list)
+print(sum_all_Fio)
+print("Демонстрация filter//отфильтруем элемент с именем строки Иванов Иван Иванович в имя")
+filt = list(filter(lambda x: x.name=='Иванов Иван Иванович', my_list))
+print(filt)

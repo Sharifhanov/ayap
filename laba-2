@@ -1,0 +1,26 @@
+# -*- coding: utf-8 -*-
+class driver:
+    def __init__(self, name, types):
+        self.name = name
+        self.types = types 
+    def __repr__(self):
+        return "%s, %r"% (self.name, self.types)
+    def __str__(self):
+        return "Имя: %s, Тип: %r" % (self.name, self.types)
+    def test(self):
+        return str(self)
+    def __call__(self, *args):
+        return  print("был вызван CALL:%s , %r" % (self.name, self.types))
+    
+my_list = [
+    driver('Шарифханов Артем Адикович', 'Категория В'),
+    driver('Иванов Иван Иванович', 'Категория В,С,D'),
+    driver('Рустамханова Гульшат Ильдаровна', 'Категория A,B,C,D,E'),
+    driver('Фархад Магдабек аглы Масулович', 'Категория В,C'),
+]
+print('Водители')
+for x in my_list:
+    print(x.test())
+    #print(repr(x))
+testCall=driver("ИмяТестCall","ТипТестCall")
+testCall()

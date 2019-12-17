@@ -11,7 +11,7 @@ class driver:
         return "%s, %r" % (self.name, self.types)
 
     def __str__(self):
-        return "Имя: %s, Тип прав: %r" % (self.name, self.types)
+        return "Имя: %s, группа: %r" % (self.name, self.types)
 
     def test(self):
         return str(self)
@@ -36,18 +36,18 @@ def SortDriver(slist):
 
 class SortMyListTest(unittest.TestCase):
     def test_normal(self):
-        res = SortDriver([driver('Шарифханов Артем Адикович', 'Категория В'),
-                            driver('Иванов Иван Иванович', 'Категория В,С,D'),
-                            driver('Рустамханова Гульшат Ильдаровна', 'Категория A,B,C,D,E'),
-                            driver('Фархад Магдабек аглы Масулович', 'Категория В,C')])
-        self.assertEqual(res, [driver('Шарифханов Артем Адикович', 'Категория В'),
-                                driver('Фархад Магдабек аглы Масулович', 'Категория В,C'),
-                                driver('Рустамханова Гульшат Ильдаровна', 'Категория A,B,C,D,E'),
-                                driver('Иванов Иван Иванович', 'Категория В,С,D')])
+        res = SortDriver([driver('Шарифханов Артем', 'Водитель'),
+                            driver('Иванов Иван', 'Водитель'),
+                            driver('Рустамханова Гульшат', 'Водитель'),
+                            driver('Тупицын Павел', 'Водитель')])
+        self.assertEqual(res, [driver('Иванов Иван', 'Водитель'),
+                                driver('Рустамханова Гульшат', 'Водитель'),
+                                driver('Тупицын Павел', 'Водитель'),
+                                driver('Шарифханов Артем', 'Водитель')])
 
     def test_single(self):
-        res = SortDriver([driver('Шарифханов Артем Адикович', 'Категория В')])
-        self.assertEqual(res, [driver('Шарифханов Артем Адикович', 'Категория В')])
+        res = SortDriver([driver('Шарифханов Артем', 'Водитель')])
+        self.assertEqual(res, [driver('Шарифханов Артем', 'Водитель')])
 
 
 if __name__ == '__main__':

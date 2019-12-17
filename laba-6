@@ -1,0 +1,34 @@
+'Человек работает в отделе'
+'Человек работает в службе'
+'Отдел входит в состав службы'
+'Если человек работает в отделе, отдел входит в состав службы, то человек работает в службе'
+
+
+from pyDatalog import pyDatalog
+pyDatalog.create_terms('otdel, slugba, prinadlegit, nachalnik, rabotaet')
++otdel('Шарифханов', 'ИС')
++otdel('Пермяков', 'ИС')
++otdel('Исаков', 'ИС')
++otdel('Дятленко', 'СС')
+pyDatalog.create_terms('X, Y')
+print(otdel(X, 'ИС'))
+
++slugba('Набатчиков', 'ИСиСС')
++slugba('Гиленко', 'ИСиСС')
++slugba('Мокрецова', 'РЗА')
++slugba('Куляшов', 'Подстанции')
+print(slugba('Гиленко', Y))
+
++prinadlegit('ИС', 'ИСиСС')
+pyDatalog.create_terms('Z, H')
+rabotaet(X, Y) <= (otdel[X] == Z) & prinadlegit(Z, Y)
+rabotaet(X, Y) <= otdel(X, Z) & prinadlegit(Z, Y)
+rabotaet(X, Y) <= otdel(X, Z)& prinadlegit(Z, Y)
+print(otdel(X, 'ИС'))
+
+print(prinadlegit(X, 'ИСиСС'))
+
+rabotaet(X, Y) <= (otdel(X, Z) & prinadlegit(Z, Y))
+rabotaet(X, Y) <= otdel(X, Z)& prinadlegit(Z, Y)
++(otdel['Шарифханов'] == 'ИС')
+print(rabotaet(X, 'ИСиСС'))

@@ -1,0 +1,15 @@
+# -*- coding: utf-8 -*-
+class driver:
+    def __init__(self, name, types, srok):
+        self.name = name
+        self.types = types
+        self.srok = srok
+my_list = [
+    driver('Шарифханов Артем Адикович', 'Категория В', 'до 21.02.2028'),
+    driver('Иванов Иван Иванович', 'Категория В,С,D', 'до 30.04.2022'),
+    driver('Рустамханова Гульшат Ильдаровна', 'Категория A,B,C,D,E', 'до 17.02.2023'),
+    driver('К=Фархад Магдабек аглы Масулович', 'Категория В,C', 'до 22.05.2030'),
+]
+print('Список водителей')
+for x in my_list:
+    print("Имя: " + x.name + " Тип прав: " + x.types + " Срок окончания: " + x.srok)
